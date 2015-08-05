@@ -1,0 +1,19 @@
+{
+    "name": "pagerange/session",
+    "description": "Simple Session Wrapper",
+    "license": "MIT",
+    "keywords": ["session", "flash", "persistence"],
+    "authors": [
+        {
+            "name": "Seve George",
+            "email": "steve@glort.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {},
+    "autoload": {
+        "psr-0" : {
+          "Pagerange\\Session" : "src"
+        }
+    }
+}
