@@ -19,14 +19,17 @@ class Flash
 
     public function message($message, $classes = [])
     {
-        $this->session['flash']['message'] = $message;
-        $this->session['flash']['classes'] = $classes;
+        $flash = [
+            'message' => $message,
+            'classes' => $classes
+        ];
+        $this->session->set('flash', $flash);
     }
 
     public function flash()
     {
         if($this->check()) {
-            $flash = $this->session->get['flash'];
+            $flash = $this->session->get('flash');
             $this->session->remove('flash');
             return $this->create($flash);
         } else {
@@ -42,10 +45,7 @@ class Flash
     private function create($flash)
     {
         $classes = $this->getClasses($flash);
-        $html = "<div class=\"flash $classes\">{PHP_EOL}
-                {$flash['message']}{PHP_EOL}
-                </div>";
-        return $html;
+        return require( __DIR__ . '/views/message.php');
     }
 
     private function getClasses($flash)
@@ -55,9 +55,9 @@ class Flash
         if(count($flash['classes'])) {
             foreach($flash['classes'] as $value) {
                 $classes .= "$value ";
-                trim($classes);
             }  // end foreach
         } // end if
+        trim($classes);
         return $classes;
     }
 

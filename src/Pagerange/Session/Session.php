@@ -8,7 +8,6 @@
 
 namespace Pagerange\Session;
 
-
 class Session implements \Pagerange\Session\ISession
 {
 
@@ -16,11 +15,12 @@ class Session implements \Pagerange\Session\ISession
 
     public function __construct()
     {
-        if(session_status() !== PHP_SESSION_ACTIVE) {
+       /* if(session_status() !== PHP_SESSION_ACTIVE) {
             throw new SessionException('Session is not active');
-        } else {
-            $this->session = &$_SESSION;
         }
+       */
+        $this->session = &$_SESSION;
+
     }
 
     public function get($key)
