@@ -1,5 +1,6 @@
 <?php
 
+
 require '../../../autoload.php';
 
 use Pagerange\Session\Session;
@@ -13,12 +14,18 @@ class FlashTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        if(session_status !=  PHP_SESSION_ACTIVE) {
-            session_start();
+        if(session_status() !=  PHP_SESSION_ACTIVE) {
+            @session_start();
+            @ob_start();
         }
        static::$session = new Session;
        static::$flash = new Flash(static::$session);
        static::$flash->message('The message has been set', ['alert-success']);
+    }
+
+    public static function tearDownAfterClass()
+    {
+        session_destroy();
     }
 
     public function testFlashMessagelExists()

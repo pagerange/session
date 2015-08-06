@@ -1,6 +1,9 @@
 <?php
 
-ob_start();
+if(session_status() !=  PHP_SESSION_ACTIVE) {
+    session_start();
+    ob_start();
+}
 
 require '../../../autoload.php';
 
@@ -15,9 +18,6 @@ class SessionTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        if(session_status !=  PHP_SESSION_ACTIVE) {
-            session_start();
-        }
         static::$session = new Session;
         static::$flash = new Flash(static::$session);
         static::$session->set('test', 3);
