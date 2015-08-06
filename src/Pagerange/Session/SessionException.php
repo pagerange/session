@@ -1,9 +1,12 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: sgeorge
- * Date: 15-08-05
- * Time: 2:43 PM
+ *
+ * Session Exception class
+ * @author Steve George <steve@glort.com>
+ * @version 1.0
+ * @license MIT
+ * @updated 2015-08-05
  */
 
 namespace Pagerange\Session;
@@ -11,5 +14,5 @@ namespace Pagerange\Session;
 
 class SessionException extends \Exception
 {
-
+    // Exception stub
 }

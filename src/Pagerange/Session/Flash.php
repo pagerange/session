@@ -1,9 +1,12 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: sgeorge
- * Date: 15-08-05
- * Time: 2:45 PM
+ *
+ * Simple Flash messaging class
+ * @author Steve George <steve@glort.com>
+ * @version 1.0
+ * @license MIT
+ * @updated 2015-08-05
  */
 
 namespace Pagerange\Session;
@@ -28,7 +31,7 @@ class Flash
 
     public function flash()
     {
-        if($this->check()) {
+        if ($this->check()) {
             $flash = $this->session->get('flash');
             $this->session->remove('flash');
             return $this->create($flash);
@@ -42,8 +45,9 @@ class Flash
         return ($this->session->check('flash')) ? true : false;
     }
 
-    public function getMessage() {
-        if($this->check()) {
+    public function getMessage()
+    {
+        if ($this->check()) {
             return $this->session->get('flash');
         } else {
             return false;
@@ -54,8 +58,8 @@ class Flash
     {
         $classes = '';
 
-        if(count($flash['classes'])) {
-            foreach($flash['classes'] as $value) {
+        if (count($flash['classes'])) {
+            foreach ($flash['classes'] as $value) {
                 $classes .= "$value ";
             }  // end foreach
         } // end if
@@ -70,5 +74,5 @@ class Flash
         return require( __DIR__ . '/views/message.php');
     }
 
-
+// end of class
 }

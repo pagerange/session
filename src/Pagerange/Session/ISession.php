@@ -1,9 +1,12 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: sgeorge
- * Date: 15-08-05
- * Time: 2:26 PM
+ *
+ * Session Interface
+ * @author Steve George <steve@glort.com>
+ * @version 1.0
+ * @license MIT
+ * @updated 2015-08-05
  */
 
 namespace Pagerange\Session;
@@ -24,5 +27,5 @@ interface ISession
 
     public function regenerate();
 
-
+// end of Interface
 }

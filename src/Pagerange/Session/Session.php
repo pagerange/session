@@ -1,9 +1,12 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: sgeorge
- * Date: 15-08-05
- * Time: 2:29 PM
+ *
+ * Simple session class
+ * @author Steve George <steve@glort.com>
+ * @version 1.0
+ * @license MIT
+ * @updated 2015-08-05
  */
 
 namespace Pagerange\Session;
@@ -16,7 +19,7 @@ class Session implements \Pagerange\Session\ISession
     public function __construct()
     {
 
-       if(session_status() !== PHP_SESSION_ACTIVE) {
+        if (session_status() !== PHP_SESSION_ACTIVE) {
             throw new SessionException('Session is not active');
         }
 
@@ -26,7 +29,7 @@ class Session implements \Pagerange\Session\ISession
 
     public function get($key)
     {
-        if($this->check($key)) {
+        if ($this->check($key)) {
             return $this->session[$key];
         } else {
             return false;
@@ -40,7 +43,7 @@ class Session implements \Pagerange\Session\ISession
 
     public function check($key)
     {
-        if(isset($this->session[$key])) {
+        if (isset($this->session[$key])) {
             return true;
         } else {
             return false;
@@ -49,7 +52,7 @@ class Session implements \Pagerange\Session\ISession
 
     public function remove($key)
     {
-        if($this->check($key)) {
+        if ($this->check($key)) {
             unset($this->session[$key]);
             return true;
         } else {
@@ -60,7 +63,7 @@ class Session implements \Pagerange\Session\ISession
     public function destroy()
     {
         // Extra step for security... and testing.
-        foreach($this->session as $key => $value) {
+        foreach ($this->session as $key => $value) {
             $this->remove($key);
         }
         session_destroy();
@@ -83,4 +86,5 @@ class Session implements \Pagerange\Session\ISession
         return session_id();
     }
 
+// end of class
 }
