@@ -2,9 +2,11 @@
 
 ## PHP Session Wrapper
 
-This class provides an easy to use wrapper for working with the PHP Session as well as some handy methods for leaving Session (Flash) messages. 
+This class provides an easy to use wrapper for working with the PHP Session as well as some handy
+methods for setting Session (Flash) messages.
 
-Why another PHP Session wrapper?  I needed something simple for my own one-off projects.  It is also require by an authentication class I developed.
+Why another PHP Session wrapper?  I needed something simple for my own one-off projects, including
+the pagerange/auth package.
 
 ### Dependencies
 
@@ -18,13 +20,14 @@ None.
 
 ### Features
 
-Class provides an easy to use, intiutive wrapper to basic PHP session management, in a nice object.
+Class provides an easy to use, intiutive object wrapper to basic PHP session management.
 
 * Starts session if not already started
 * Set session vars
 * Get session vars
 * Remove session vars
 * Check if session var is set
+* Get session id
 * Regenerate session id
 * Destroy session
 * Set Flash message
@@ -56,12 +59,14 @@ $session->regenerate(); // regenerate session_id
 // set flash message with class alert-success
 $flash->message('You are now logged in!', ['alert-success']); 
 
-// output flash message, if any.  Message is removed from session after display.  Returns empty string if flash message is not set.
+// output flash message, if any.  Message is removed from session after display.
+// Returns empty string if flash message is not set.
 $flash->flash() 
 
 ```
 
-Flash messaging is output in a div with the classes flash, alert, and a series of classes that match Bootstrap alert classes, and can be styled accordingly.
+Flash messaging is output in a div with the classes flash, alert, and a series of classes that match
+Bootstrap alert classes, and can be styled accordingly.
 
 ```html
 
@@ -108,10 +113,18 @@ The MIT License (MIT)
 
 Copyright (c) 2015  by Steve George <steve@pagerange.com>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions
+of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
