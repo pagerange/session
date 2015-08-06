@@ -33,6 +33,11 @@ class Session implements \Pagerange\Session\ISession
          * session_id in the midst of unit testing output.
          */
         $this->testing = $testing;
+
+        /*
+         * We can have as many instances of Session() as we like...
+         * They will all use the same php $_SESSION.
+         */
         $this->session = &$_SESSION;
 
     }

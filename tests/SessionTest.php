@@ -20,7 +20,7 @@ class SessionTest extends PHPUnit_Framework_TestCase
     {
         // Pass bool true to Session constructor if testing
         static::$session = new Session(true);
-        static::$flash = new Flash(static::$session);
+        static::$flash = new Flash();
         static::$session->set('test', 3);
         static::$session->set('test2', 4);
     }

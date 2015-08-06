@@ -15,9 +15,9 @@ class Flash
 {
     private $session;
 
-    public function __construct(&$session)
+    public function __construct($testing = false)
     {
-        $this->session = $session;
+        $this->session = new Session($testing);
     }
 
     public function message($message, $classes = [])
