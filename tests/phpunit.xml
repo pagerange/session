@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- THESE TESTS NEED TO BE RUN IN ORDER!!! -->
+<phpunit bootstrap="../../../autoload.php">
+    <testsuites>
+        <testsuite name="Session and Flash class tests">
+            <file>SessionTest.php</file>
+            <file>FlashTest.php</file>
+        </testsuite>
+    </testsuites>
+    <logging>
+      <log type="testdox-text" target="test_results.txt" />
+    </logging>
+</phpunit>

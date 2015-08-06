@@ -15,7 +15,7 @@ class Flash
 {
     private $session;
 
-    public function __construct(Session &$session)
+    public function __construct(&$session)
     {
         $this->session = $session;
     }

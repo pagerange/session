@@ -5,16 +5,17 @@ require '../../../autoload.php';
 use Pagerange\Session\Session;
 use Pagerange\Session\Flash;
 
-if(!isset($_SESSION)) $_SESSION = [];
-
 class FlashTest extends PHPUnit_Framework_TestCase
 {
 
     private static $session;
     private static $flash;
 
-    public function setUp()
+    public static function setUpBeforeClass()
     {
+        if(session_status !=  PHP_SESSION_ACTIVE) {
+            session_start();
+        }
        static::$session = new Session;
        static::$flash = new Flash(static::$session);
        static::$flash->message('The message has been set', ['alert-success']);
@@ -22,30 +23,30 @@ class FlashTest extends PHPUnit_Framework_TestCase
 
     public function testFlashMessagelExists()
     {
-       $this->assertequals(true, static::$flash->check());
+       $this->assertTrue(static::$flash->check(), 'A flash message should exist at this point');
     }
 
     public function testGetMessage()
     {
-        $this->assertequals(true, is_array(static::$flash->getMessage()));
+        $this->assertTrue(is_array(static::$flash->getMessage()), 'The flash message should be an array');
     }
 
     public function testMessageContent()
     {
         $flash = static::$flash->getMessage();
-        $this->assertequals('The message has been set', $flash['message']);
+        $this->assertEquals('The message has been set', $flash['message'], 'Message text should be correct');
     }
 
     public function testClassesContent()
     {
         $flash = static::$flash->getMessage();
-        $this->assertequals('alert-success', $flash['classes'][0]);
+        $this->assertEquals('alert-success', $flash['classes'][0], 'Classes text should be correct');
     }
 
     public function testFlashMessageRemovedAfterDisplay()
     {
         static::$flash->flash();
-        $this->assertequals(false, static::$flash->check());
+        $this->assertFalse(static::$flash->check(), 'No flash message should exist after being displayed once.');
     }
 
 
