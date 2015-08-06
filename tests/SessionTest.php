@@ -18,7 +18,8 @@ class SessionTest extends PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
-        static::$session = new Session;
+        // Pass bool true to Session constructor if testing
+        static::$session = new Session(true);
         static::$flash = new Flash(static::$session);
         static::$session->set('test', 3);
         static::$session->set('test2', 4);
@@ -57,6 +58,7 @@ class SessionTest extends PHPUnit_Framework_TestCase
         static::$session->destroy();
         $this->assertEquals(0, static::$session->count(), 'Count of vars should be 0 after session destroyed');
     }
+    
 
 // end test class
 }

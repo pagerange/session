@@ -18,7 +18,10 @@ class FlashTest extends PHPUnit_Framework_TestCase
             @session_start();
             @ob_start();
         }
-       static::$session = new Session;
+
+
+        // Pass bool true to Session constructor if testing
+       static::$session = new Session(true);
        static::$flash = new Flash(static::$session);
        static::$flash->message('The message has been set', ['alert-success']);
     }

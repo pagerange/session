@@ -15,14 +15,19 @@ class Session implements \Pagerange\Session\ISession
 {
 
     private $session;
+    private $testing;
 
-    public function __construct()
+    public function __construct($testing = false)
     {
 
         if (session_status() !== PHP_SESSION_ACTIVE) {
             throw new SessionException('Session is not active');
         }
-
+        /*
+         * Required for unit testing.   Cannot regenerate session_id in
+         * midst of unit testing output.
+         */
+        $this->testing = $testing;
         $this->session = &$_SESSION;
 
     }
@@ -78,7 +83,13 @@ class Session implements \Pagerange\Session\ISession
 
     public function regenerate()
     {
-        session_regenerate_id(true);
+        /*
+         * Test environment will not allow regeneration of session ID.
+         * pass true if running unit tests
+         */
+        if(!$this->testing) {
+            session_regenerate_id(true);
+        }
     }
 
     public function getSessionId()
