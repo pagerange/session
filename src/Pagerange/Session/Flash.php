@@ -42,10 +42,12 @@ class Flash
         return ($this->session->check('flash')) ? true : false;
     }
 
-    private function create($flash)
-    {
-        $classes = $this->getClasses($flash);
-        return require( __DIR__ . '/views/message.php');
+    public function getMessage() {
+        if($this->check()) {
+            return $this->session->get('flash');
+        } else {
+            return false;
+        }
     }
 
     private function getClasses($flash)
@@ -59,6 +61,13 @@ class Flash
         } // end if
         trim($classes);
         return $classes;
+    }
+
+
+    private function create($flash)
+    {
+        $classes = $this->getClasses($flash);
+        return require( __DIR__ . '/views/message.php');
     }
 
 

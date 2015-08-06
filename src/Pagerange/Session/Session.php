@@ -15,10 +15,11 @@ class Session implements \Pagerange\Session\ISession
 
     public function __construct()
     {
-       /* if(session_status() !== PHP_SESSION_ACTIVE) {
+
+       if(session_status() !== PHP_SESSION_ACTIVE) {
             throw new SessionException('Session is not active');
         }
-       */
+
         $this->session = &$_SESSION;
 
     }
@@ -58,12 +59,28 @@ class Session implements \Pagerange\Session\ISession
 
     public function destroy()
     {
+        // Extra step for security... and testing.
+        foreach($this->session as $key => $value) {
+            $this->remove($key);
+        }
         session_destroy();
     }
+
+    public function count()
+    {
+        return count($this->session);
+    }
+
+    /* Follow Functions Can't be Tested by PHP CLI... no session exists */
 
     public function regenerate()
     {
         session_regenerate_id(true);
+    }
+
+    public function getSessionId()
+    {
+        return session_id();
     }
 
 }
