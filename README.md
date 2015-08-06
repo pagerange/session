@@ -39,7 +39,7 @@ use Pagerange\Session\Session;
 use Pagerange\Session\Flash;
 
 $session = new Session();
-$flash = new Flash($session);
+$flash = new Flash($session); // note dependency injection
 
 // Use as required
 
