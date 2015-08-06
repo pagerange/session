@@ -58,7 +58,7 @@ class SessionTest extends PHPUnit_Framework_TestCase
         static::$session->destroy();
         $this->assertEquals(0, static::$session->count(), 'Count of vars should be 0 after session destroyed');
     }
-    
+
 
 // end test class
 }
