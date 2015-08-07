@@ -6,7 +6,9 @@
     "authors": [
         {
             "name": "Seve George",
-            "email": "steve@glort.com"
+            "email": "steve@glort.com",
+            "role": "developer",
+            "homepage": "http://www.pagerange.com"
         }
     ],
     "require": {},
