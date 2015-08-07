@@ -46,8 +46,6 @@ $flash = new Flash();
 
 // Use as required
 
-```php
-
 $session->set('logged_in', true); // set value of logged_in to true
 $session->set('username', 'Steve'); // set value of username to Steve
 $session->get('logged_in'); // returns value of logged_in, NULL if not set
