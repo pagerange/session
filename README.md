@@ -91,11 +91,6 @@ Note: Flash messaging will work without jQuery, but will have no animation.
 
 ```
 
-### Demo
-
-A simple demo of the session class in action, as used by the Auth class, can be seen here:
-
-[Live demo of Session and Flash](http://www.pagerange.com/projects/auth/demo/)
 
 ### Support
 
@@ -125,4 +120,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-# Updated 2015-08-12
