@@ -14,8 +14,24 @@ None.
 
 ### Installation
 
-```bash
-	composer require pagerange/session
+Note: has not yet been released on Packagist.  You can still install  using composer by adding a repositories section to composer.json:
+
+```json
+
+{
+
+ "repositories": [
+  {
+    "type": "vcs",
+    "url": "https://github.com/pagerange/session.git"
+  }
+ ],
+ "require": {
+  "pagerange/session": "@alpha"
+ }
+
+}
+
 ```
 
 ### Features
