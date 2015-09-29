@@ -34,6 +34,14 @@ Note: has not yet been released on Packagist.  You can still install  using comp
 
 ```
 
+Then install with composer:
+
+```bash
+
+  composer install
+
+```
+
 ### Features
 
 Class provides an easy to use, intiutive object wrapper to basic PHP session management.
