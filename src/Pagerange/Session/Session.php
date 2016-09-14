@@ -2,11 +2,11 @@
 
 /**
  *
- * Simple session class
+ * Simple session wrapper class
  * @author Steve George <steve@glort.com>
  * @version 1.0
  * @license MIT
- * @updated 2015-08-05
+ * @updated 2016-09-13
  */
 
 namespace Pagerange\Session;
@@ -15,30 +15,19 @@ class Session implements \Pagerange\Session\ISession
 {
 
     private $session;
-    private $testing;
 
     /**
      * Construct our session
-     * @param bool|false $testing Should session be in testing mode?
+     * @param session the $_SESSION
      * @throws SessionException
      */
-    public function __construct($testing = false)
+    public function __construct($session)
     {
-
         if (session_status() !== PHP_SESSION_ACTIVE) {
             throw new SessionException('Session is not active');
         }
-        /*
-         * Required for unit testing.   Cannot regenerate
-         * session_id in the midst of unit testing output.
-         */
-        $this->testing = $testing;
 
-        /*
-         * We can have as many instances of Session() as we like...
-         * They will all use the same php $_SESSION.
-         */
-        $this->session = &$_SESSION;
+        $this->session = $session;
 
     }
 
@@ -81,36 +70,16 @@ class Session implements \Pagerange\Session\ISession
     }
 
     /**
-     * Remove/delete a session var
+     * Unset a session var
      * @param $key
-     * @return bool
      */
     public function remove($key)
     {
         if ($this->check($key)) {
             unset($this->session[$key]);
-            return true;
-        } else {
-            return false;
-        }
+        } 
     }
 
-    /**
-     * Destroy the session
-     * @return bool if successful
-     * @throws SessionException
-     */
-    public function destroy()
-    {
-        // Extra step for security... and testing.
-        foreach ($this->session as $key => $value) {
-            $this->remove($key);
-        }
-        if(!session_destroy()) {
-            throw new SessionException('Could not destroy session');
-        };
-        return true;
-    }
 
     /**
      * @return int a count of the session vars
@@ -122,32 +91,11 @@ class Session implements \Pagerange\Session\ISession
 
 
     /**
-     * Regenerate the session id
-     * @return bool
-     */
-    public function regenerate()
-    {
-        /*
-         * Test environment will not allow regeneration of session ID.
-         * pass true if running unit tests
-         */
-        if(!$this->testing) {
-            session_regenerate_id(true);
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Get the current session id
-     * @return bool|string
      */
-    public function getSessionId()
+    public function sessionId()
     {
-        if(!$this->testing) {
-            return session_id();
-        }
-        return false;
+       return session_id();
 
     }
 
