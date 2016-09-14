@@ -1,5 +1,7 @@
 <?php
 
+require '../vendor/autoload.php';
+
 use Pagerange\Session\Session;
 
 class SessionTest extends PHPUnit_Framework_TestCase
