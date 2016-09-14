@@ -1,5 +1,7 @@
 # Session
 
+[![Build Status](https://travis-ci.org/pagerange/session.svg?branch=master)](https://travis-ci.org/pagerange/session)
+
 ## PHP Session Wrapper
 
 Simple session wrapper.
