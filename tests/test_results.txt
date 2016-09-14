@@ -1,15 +1,6 @@
 Session
- [x] Session exists
  [x] Setting session var
  [x] Getting session var
  [x] Removing session var
  [x] Ensure var was removed by checking count
- [x] Destroying session
-
-Flash
- [x] Flash messagel exists
- [x] Get message
- [x] Message content
- [x] Classes content
- [x] Flash message removed after display
 

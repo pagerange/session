@@ -23,9 +23,5 @@ interface ISession
 
     public function remove($key);
 
-    public function destroy();
-
-    public function regenerate();
-
 // end of Interface
 }

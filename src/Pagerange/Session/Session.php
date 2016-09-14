@@ -23,7 +23,7 @@ class Session implements \Pagerange\Session\ISession
      */
     public function __construct($session)
     {
-        if (session_status() !== PHP_SESSION_ACTIVE) {
+        if (!is_array($session)) {
             throw new SessionException('Session is not active');
         }
 
@@ -87,16 +87,6 @@ class Session implements \Pagerange\Session\ISession
     public function count()
     {
         return count($this->session);
-    }
-
-
-    /**
-     * Get the current session id
-     */
-    public function sessionId()
-    {
-       return session_id();
-
     }
 
 // end of class
