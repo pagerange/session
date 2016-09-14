@@ -1,8 +1,8 @@
 <?php
 
-require '../src/Pagerange/Session/ISession.php';
-require '../src/Pagerange/Session/Session.php';
-require '../src/Pagerange/Session/SessionException.php';
+require 'src/Pagerange/Session/ISession.php';
+require 'src/Pagerange/Session/Session.php';
+require 'src/Pagerange/Session/SessionException.php';
 
 use Pagerange\Session\Session;
 
