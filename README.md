@@ -10,7 +10,7 @@ None.
 
 ### Installation
 
-You can download and install in your path manually, or you can install  using composer by adding a repositories section to composer.json:
+You can download and install in your path manually, or add a repositories section to composer.json:
 
 ```json
 
